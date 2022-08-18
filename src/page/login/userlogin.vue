@@ -138,12 +138,20 @@ export default {
     handleLogin() {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
+          const loading = this.$loading({
+            lock: true,
+            text: '正在登陆',
+            spinner: 'el-icon-loading',
+            background: 'rgba(0, 0, 0, 0.7)'
+          });
           this.$store
             .dispatch("LoginByUsername", this.loginForm)
             .then(() => {
+              loading.close();
               this.$router.push({path: this.tagWel.value});
             })
             .catch(() => {
+              loading.close();
               this.refreshCode();
             });
         }

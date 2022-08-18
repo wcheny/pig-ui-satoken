@@ -10,7 +10,7 @@
     </div>
     <div class="top-bar__title">
       <div class="top-bar__item top-bar__item--show"
-           v-if="showMenu">
+           >
         <top-menu></top-menu>
       </div>
     </div>

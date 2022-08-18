@@ -3,7 +3,7 @@
     <el-menu :default-active="activeIndex"
              mode="horizontal"
              text-color="#333">
-      <template v-for="(item,index) in items">
+      <template v-for="(item,index) in item">
         <el-menu-item :index="item.parentId+''"
                       @click.native="openMenu(item)"
                       :key="index">
