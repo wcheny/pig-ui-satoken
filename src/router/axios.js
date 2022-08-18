@@ -54,20 +54,18 @@ axios.interceptors.response.use(
     const status = Number(res.status) || 200;
     const message = res.data.msg || errorCode[status] || errorCode["default"];
 
-    // 后台定义 424 针对令牌过去的特殊响应码
+    // 后台定义 424 针对令牌过期的特殊响应码
     if (status === 424) {
-      MessageBox.confirm("令牌状态已过期，请点击重新登录", "系统提示", {
-        confirmButtonText: "重新登录",
-        cancelButtonText: "取消",
-        type: "warning"
-      })
-        .then(() => {
+      MessageBox.alert("令牌状态已过期，请重新登录", "系统提示", {
+        confirmButtonText: "确定",
+        type: "warning",
+        callback(){
           store.dispatch("LogOut").then(() => {
             // 刷新登录页面，避免多次弹框
             window.location.reload();
           });
-        })
-        .catch(() => {});
+        }
+      });
       return;
     }
 

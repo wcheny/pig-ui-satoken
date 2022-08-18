@@ -54,8 +54,7 @@ const user = {
       return new Promise((resolve, reject) => {
         loginByUsername(user.username, user.password, user.code, user.randomStr).then(response => {
           const data = response.data
-          commit('SET_ACCESS_TOKEN', data.access_token)
-          commit('SET_REFRESH_TOKEN', data.refresh_token)
+          commit('SET_ACCESS_TOKEN', data.data)
           commit('CLEAR_LOCK')
           resolve()
         }).catch(error => {
@@ -68,8 +67,7 @@ const user = {
       return new Promise((resolve, reject) => {
         loginByMobile(userInfo.mobile, userInfo.code).then(response => {
           const data = response.data
-          commit('SET_ACCESS_TOKEN', data.access_token)
-          commit('SET_REFRESH_TOKEN', data.refresh_token)
+          commit('SET_ACCESS_TOKEN', data.data)
           commit('CLEAR_LOCK')
           resolve()
         }).catch(error => {
@@ -90,20 +88,6 @@ const user = {
         })
       })
     },
-    // 刷新token
-    RefreshToken({commit, state}) {
-      return new Promise((resolve, reject) => {
-        refreshToken(state.refresh_token).then(response => {
-          const data = response.data
-          commit('SET_ACCESS_TOKEN', data.access_token)
-          commit('SET_REFRESH_TOKEN', data.refresh_token)
-          commit('CLEAR_LOCK')
-          resolve()
-        }).catch(error => {
-          reject(error)
-        })
-      })
-    },
     // 登出
     LogOut({commit}) {
       return new Promise((resolve, reject) => {
@@ -112,7 +96,6 @@ const user = {
           commit('SET_PERMISSIONS', [])
           commit('SET_USER_INFO', {})
           commit('SET_ACCESS_TOKEN', '')
-          commit('SET_REFRESH_TOKEN', '')
           commit('SET_ROLES', [])
           commit('DEL_ALL_TAG')
           commit('CLEAR_LOCK')
@@ -129,7 +112,6 @@ const user = {
         commit('SET_PERMISSIONS', [])
         commit('SET_USER_INFO', {})
         commit('SET_ACCESS_TOKEN', '')
-        commit('SET_REFRESH_TOKEN', '')
         commit('SET_ROLES', [])
         commit('DEL_ALL_TAG')
         commit('CLEAR_LOCK')
@@ -159,14 +141,6 @@ const user = {
       setStore({
         name: 'access_token',
         content: state.access_token,
-        type: 'session'
-      })
-    },
-    SET_REFRESH_TOKEN: (state, rfToken) => {
-      state.refresh_token = rfToken
-      setStore({
-        name: 'refresh_token',
-        content: state.refresh_token,
         type: 'session'
       })
     },

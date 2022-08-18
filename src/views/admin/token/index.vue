@@ -79,9 +79,10 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(function () {
-        return delObj(row.accessToken)
+        return delObj(row.tokenId);
       }).then(data => {
-        this.$message.success('删除成功')
+        this.$message.success('删除成功');
+        this.refreshChange();
       })
     },
     refreshChange() {

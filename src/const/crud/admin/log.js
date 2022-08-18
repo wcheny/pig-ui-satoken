@@ -49,7 +49,7 @@ export const tableOption = {
     label: '请求方式',
     prop: 'method'
   }, {
-    label: '客户端',
+    label: '服务名称',
     prop: 'serviceId'
   }, {
     width: 80,

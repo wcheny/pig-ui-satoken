@@ -20,6 +20,7 @@ export const tableOption = {
   index: true,
   indexLabel: '序号',
   stripe: true,
+  menuWidth:100,
   menuAlign: 'center',
   align: 'center',
   searchMenuSpan: 6,
@@ -28,25 +29,45 @@ export const tableOption = {
   editBtn: false,
   column: [{
     label: '用户名',
-    prop: 'username',
-    align: 'center',
-    slot: true
+    prop: 'userName',
+    align: 'center'
   }, {
-    label: "客户端",
-    prop: "clientId",
-    align: "center"
-  }, {
-    label: '令牌',
-    prop: 'accessToken',
-    align: 'center',
+    label: "用户类型",
+    prop: "userType",
+    align: "center",
     overHidden: true
-  }, {
-    label: '创建时间',
-    prop: 'issuedAt',
-    align: 'center'
-  }, {
-    label: '过期时间',
-    prop: 'expiresAt',
-    align: 'center'
-  }]
+  },
+    {
+      label: "浏览器",
+      prop: "browser",
+      align: "center",
+      overHidden: true
+    }, {
+      label: "操作系统",
+      prop: "os",
+      align: "center",
+      overHidden: true
+    }, {
+      label: "IP",
+      prop: "ipaddr",
+      align: "center",
+      overHidden: true
+    }, {
+      label: '令牌',
+      prop: 'tokenId',
+      align: 'center',
+      overHidden: true,
+      width:200
+    }, {
+      label: '创建时间',
+      prop: 'loginTime',
+      align: 'center',
+      overHidden: true,
+      width:170
+    }, {
+      label: '剩余时长(秒)',
+      prop: 'tokenTimeout',
+      align: 'center',
+      overHidden: true
+    }]
 }

@@ -37,7 +37,6 @@ import tags from './tags'
 import top from './top/'
 import sidebar from './sidebar/'
 import admin from '@/util/admin'
-import {checkToken} from '@/api/login'
 
 export default {
   components: {
@@ -48,15 +47,9 @@ export default {
   name: 'index',
   data() {
     return {
-      //刷新token锁
-      refreshLock: false,
-      //刷新token的时间
-      refreshTime: '',
     }
   },
   created() {
-    //实时检测刷新token
-    this.refreshToken()
   },
   destroyed() {
     clearInterval(this.refreshTime)
@@ -78,11 +71,6 @@ export default {
           this.$store.commit('SET_SCREEN', admin.getScreen())
         }, 0)
       }
-    },
-    refreshToken() {
-      this.refreshTime = setInterval(() => {
-        checkToken(this.refreshLock, this.$store)
-      }, 60000)
     },
   }
 }
