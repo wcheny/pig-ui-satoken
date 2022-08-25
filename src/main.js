@@ -14,7 +14,7 @@ import "./permission"; // 权限
 import "./error"; // 日志
 import router from "./router/router";
 import store from "./store";
-import { loadStyle, downBlobFile } from "@/util/util";
+import { loadStyle, downBlobFile,selectDictLabel } from "@/util/util";
 import { validatenull } from "@/util/validate";
 import * as urls from "@/config/env";
 import { iconfontUrl, iconfontVersion } from "@/config/env";
@@ -29,6 +29,7 @@ import DictTag from '@/components/DictTag'
 // 挂载常用全局方法，import 引入
 Vue.prototype.validatenull = validatenull;
 Vue.prototype.downBlobFile = downBlobFile;
+Vue.prototype.selectDictLabel = selectDictLabel;
 
 DictResolver.install()
 

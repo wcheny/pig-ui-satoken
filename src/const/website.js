@@ -5,8 +5,8 @@ export default {
   key: "project", //配置主键,目前用于存储
   title: "快速开发框架",
   validateCode: true,//是否开启验证码校验
-  codeLogin:false,//短信登陆
-  register: false, //是否开启注册
+  codeLogin:true,//短信登陆
+  register: true, //是否开启注册
   whiteList: ["/login", "/404", "/401", "/lock"], // 配置无权限可以访问的页面
   whiteTagList: ["/login", "/404", "/401", "/lock"], // 配置不添加tags页面 （'/advanced-router/mutative-detail/*'——*为通配符）
   lockPage: "/lock",

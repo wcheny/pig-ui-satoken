@@ -20,6 +20,7 @@ export default function (Vue, options) {
       }
       options.onCreated && options.onCreated(this.dict)
       this.dict.init(this.$options.dictTypes).then(() => {
+        console.log("dictMeta==>",this.dict)
         options.onReady && options.onReady(this.dict)
         this.$nextTick(() => {
           this.$emit('dictReady', this.dict)
